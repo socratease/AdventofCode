@@ -1,0 +1,71 @@
+stringdirections = "L3, R1, L4, L1, L2, R4, L3, L3, R2, R3, L5, R1, R3, L4, L1, L2, R2, R1, L4, L4, R2, L5, R3, R2, R1, L1, L2, R2, R2, L1, L1, R2, R1, L3, L5, R4, L3, R3, R3, L5, L190, L4, R4, R51, L4, R5, R5, R2, L1, L3, R1, R4, L3, R1, R3, L5, L4, R2, R5, R2, L1, L5, L1, L1, R78, L3, R2, L3, R5, L2, R2, R4, L1, L4, R1, R185, R3, L4, L1, L1, L3, R4, L4, L1, R5, L5, L1, R5, L1, R2, L5, L2, R4, R3, L2, R3, R1, L3, L5, L4, R3, L2, L4, L5, L4, R1, L1, R5, L2, R4, R2, R3, L1, L1, L4, L3, R4, L3, L5, R2, L5, L1, L1, R2, R3, L5, L3, L2, L1, L4, R4, R4, L2, R3, R1, L2, R1, L2, L2, R3, R3, L1, R4, L5, L3, R4, R4, R1, L2, L5, L3, R1, R4, L2, R5, R4, R2, L5, L3, R4, R1, L1, R5, L3, R1, R5, L2, R1, L5, L2, R2, L2, L3, R3, R3, R1"
+
+rawdirections = stringdirections.split(", ")
+directions = list(rawdirections)
+distances = list(rawdirections)
+
+n = 0
+s = 0
+e = 0
+w = 0
+currentdirection = "north"
+currentstring = 0
+explaces = []
+
+stripstring = 0
+for string in distances:
+  distances[stripstring] = string.strip("R")
+  stripstring += 1
+  
+stripstring = 0
+for string in distances:
+  distances[stripstring] = string.strip("L")
+  stripstring += 1
+  
+print distances
+
+for string in directions:
+  if currentdirection is "north":
+    if "R" in string:
+      currentdirection = "east"
+    elif "L" in string:
+      currentdirection = "west"
+    else:
+        print "broken @ direction"
+  elif currentdirection is "south":
+    if "R" in string:
+      currentdirection = "west"
+    elif "L" in string:
+      currentdirection = "east"
+    else:
+        print "broken @ direction"
+  elif currentdirection is "east":
+    if "R" in string:
+      currentdirection = "south"
+    elif "L" in string:
+      currentdirection = "north"
+    else:
+        print "broken @ direction"
+  elif currentdirection is "west":
+    if "R" in string:
+      currentdirection = "north"
+    elif "L" in string:
+      currentdirection = "south"
+    else:
+        print "broken @ direction"
+
+  if currentdirection is "north":
+    n += int(distances[currentstring])
+  elif currentdirection is "south":
+    s += int(distances[currentstring])
+  elif currentdirection is "east":
+    e += int(distances[currentstring])
+  elif currentdirection is "west":
+    w += int(distances[currentstring])
+  else:
+    print "broken at distances"
+  
+  place = [(n - s), (e - w)]
+  explaces.append(place)
+
+  currentstring += 1
