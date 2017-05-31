@@ -1,9 +1,9 @@
 import turtle
 wn = turtle.Screen()
-wn.setworldcoordinates(-50,-50,50,50)
+wn.setworldcoordinates(-300,-300,300,300)
 chris = turtle.Turtle()
 turtle.speed(0)
-
+chris.hideturtle()
 
 stringdirections = "L3, R1, L4, L1, L2, R4, L3, L3, R2, R3, L5, R1, R3, L4, L1, L2, R2, R1, L4, L4, R2, L5, R3, R2, R1, L1, L2, R2, R2, L1, L1, R2, R1, L3, L5, R4, L3, R3, R3, L5, L190, L4, R4, R51, L4, R5, R5, R2, L1, L3, R1, R4, L3, R1, R3, L5, L4, R2, R5, R2, L1, L5, L1, L1, R78, L3, R2, L3, R5, L2, R2, R4, L1, L4, R1, R185, R3, L4, L1, L1, L3, R4, L4, L1, R5, L5, L1, R5, L1, R2, L5, L2, R4, R3, L2, R3, R1, L3, L5, L4, R3, L2, L4, L5, L4, R1, L1, R5, L2, R4, R2, R3, L1, L1, L4, L3, R4, L3, L5, R2, L5, L1, L1, R2, R3, L5, L3, L2, L1, L4, R4, R4, L2, R3, R1, L2, R1, L2, L2, R3, R3, L1, R4, L5, L3, R4, R4, R1, L2, L5, L3, R1, R4, L2, R5, R4, R2, L5, L3, R4, R1, L1, R5, L3, R1, R5, L2, R1, L5, L2, R2, L2, L3, R3, R3, R1"
 
@@ -16,8 +16,10 @@ s = 0
 e = 0
 w = 0
 currentdirection = "north"
-currentstring = 46
+currentstring = 0
 explaces = []
+xs = []
+ys = []
 
 stripstring = 0
 for string in distances:
@@ -79,8 +81,8 @@ for string in directions:
     print "broken at distances"
     
   chris.forward(int(distances[currentstring]))
-  
-  
+  xs.append(chris.xcor())
+  ys.append(chris.ycor())
   place = [(n - s), (e - w)]
   explaces.append(place)
 
@@ -97,5 +99,3 @@ print explaces
 
  
 #print distances 
-
-  
